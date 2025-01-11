@@ -31,7 +31,8 @@ const Header = () => {
 
   return (
     <>
-      <nav className="py-4 flex justify-between items-center">
+      {/* Navigation Bar */}
+      <nav className="py-4 flex justify-between items-center relative z-20">
         <Link to="/">
           <img src="/logo.png" className="h-20" alt="Hirrd Logo" />
         </Link>
@@ -76,14 +77,20 @@ const Header = () => {
         </div>
       </nav>
 
+      {/* Login Popup */}
       {showSignIn && (
         <div
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
           onClick={handleOverlayClick}
         >
           <SignIn
             signUpForceRedirectUrl="/onboarding"
             fallbackRedirectUrl="/onboarding"
+            appearance={{
+              elements: {
+                modal: "z-50",
+              },
+            }}
           />
         </div>
       )}
